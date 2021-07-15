@@ -1,0 +1,346 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+//Payment class
+class Payment {
+private:
+    int paymentID;
+    int courseID;
+
+public:
+    Payment();
+    Payment(int ppaymentID, int pcourseID);
+    void displayPaymentDetails();
+    void calculatePayment();
+    ~Payment();
+
+};
+
+//Payment class function declaration
+Payment::Payment() {
+}
+
+Payment::Payment(int ppaymentID, int pcourseID){
+     paymentID=ppaymentID;
+     courseID=pcourseID;
+}
+
+void Payment::displayPaymentDetails(){
+  cout << "DisplayPaymentDetails function called " << endl;
+  cout << endl;
+  cout << "PaymentID : " << paymentID << endl;
+  cout << "---------------------------------------------" << endl;
+  cout << endl;
+}
+
+void Payment::calculatePayment(){
+
+}
+
+Payment::~Payment(){
+}
+
+//Course class
+class Course {
+private:
+    int courseID;
+    string courseName;
+    Payment *pay1;
+    int paymentID;
+
+public:
+    Course();
+    Course(int kcourseID, string kcourseName,int kpaymentID);
+    Course(int kpaymentID, int kcourseID );
+    void addCourse();
+    void removeCourse();
+    void displayCourseDetails();
+    ~Course();
+};
+
+//Course class function declaration
+Course::Course(){
+}
+
+Course::Course(int kcourseID, string kcourseName,int kpaymentID){
+    courseID=kcourseID;
+    courseName=kcourseName;
+    paymentID=kpaymentID;
+    pay1= new Payment(kcourseID, kpaymentID);
+}
+
+void Course::addCourse(){
+}
+
+void Course::removeCourse(){
+}
+
+void Course::displayCourseDetails(){
+    cout << "DisplayCourseDetails function called " << endl;
+    cout << endl;
+    cout << "courseID : " << courseID << endl;
+    cout << "---------------------------------------------" << endl;
+    cout << endl;
+}
+
+Course::~Course(){
+}
+
+
+//Customer class
+class Customer {
+private:
+    string customerName;
+    int customerID;
+    string password;
+    Course *course;
+
+public:
+    Customer();
+    Customer(string custName, int custID, string ppassword);
+    Customer(string custName, int custID, string ppassword,Course *crs);
+    void displayCustomerDetails();
+    void makePayment();
+    ~Customer();
+};
+
+//Customer class function declaration
+Customer::Customer(){
+}
+
+Customer::Customer(string custName, int custID, string ppassword,Course *crs){
+    customerName=custName;
+    customerID=custID;
+    password=ppassword;
+    course = crs;
+}
+
+void Customer::displayCustomerDetails(){
+    cout << "DisplayCustomerDetails function called " << endl;
+    cout << "Customer Name : " << customerName << endl;
+    cout << "---------------------------------------------" << endl;
+    cout << endl;
+}
+
+void Customer::makePayment(){
+}
+
+Customer::~Customer(){
+}
+
+
+//Class Report
+class Report {
+private:
+    int reportID;
+    string reportName;
+
+public:
+    Report();
+    Report(int preportID, string preportName);
+    void generateReport();
+    ~Report();
+
+};
+
+//Report class function declaration
+Report::Report(){
+}
+Report::Report(int preportID, string preportName){
+    reportID=preportID;
+    reportName=preportName;
+}
+void Report::generateReport(){
+}
+Report::~Report(){
+}
+
+//class LectureSession
+class  LectureSession{
+    private :
+      int lecID;
+      int customerID;
+
+    public :
+      LectureSession();
+      LectureSession(int plecID,int pcustomerID);
+      void viewSchedule();
+      ~ LectureSession();
+
+};
+
+//LectureSession class function declaration
+  LectureSession::LectureSession(){
+}
+ LectureSession:: LectureSession(int plecID,int pcustomerID){
+      lecID=plecID;
+      customerID=pcustomerID;
+}
+void LectureSession::viewSchedule(){
+    cout << "LectureSession function called" << endl;
+
+    cout << endl;
+}
+LectureSession::~LectureSession (){
+}
+//class Admin
+class Admin {
+private:
+    int adminID;
+    string adminName;
+    Report *Rpt;
+    Course *Crse;
+
+public:
+    Admin();
+    Admin(int padminID, string padminName,Report *R,Course *C);
+    Admin(int padminID, string padminName);
+    void validatePayment();
+    void updateSystemDetails();
+    ~Admin();
+
+};
+
+//Admin class function declaration
+Admin::Admin(){
+}
+
+Admin::Admin(int padminID, string padminName,Report *R,Course *C){
+   adminID=padminID;
+   adminName=padminName;
+   Rpt=R;
+   Crse=C;
+}
+
+void Admin::validatePayment(){
+}
+
+void Admin::updateSystemDetails(){
+}
+
+Admin::~Admin(){
+}
+
+//class Manager
+class Manage{
+     private :
+       int lecID;
+       string date;
+       LectureSession *lecs;
+       Admin*adm;
+
+    public :
+       Manage();
+       Manage(int plecID,string pdate, LectureSession*L,Admin *A);
+       Manage(int plecID,string pdate);
+       void cancelLec();
+       void updateLec();
+       void assingDate();
+       ~Manage();
+};
+
+//Manager class function declaration
+Manage::Manage(){
+}
+
+Manage::Manage(int plecID,string pdate, LectureSession *L,Admin *A){
+       lecID=plecID;
+       date=pdate;
+       lecs=L;
+       adm=A;
+}
+
+void Manage::cancelLec(){
+}
+
+void Manage::updateLec(){
+}
+
+void assingDate(){
+}
+
+Manage::~Manage(){
+}
+
+//class Instructor
+class Instructor{
+    private :
+      string instructorName;
+      int instructorID;
+
+    public:
+      Instructor();
+      Instructor(string insName,int insID);
+      void ViewShedule();
+      void createQuiz();
+      ~Instructor();
+
+};
+
+//Manager class function declaration
+Instructor::Instructor(){
+}
+
+Instructor::Instructor(string insName,int insID){
+      instructorName=insName;
+      instructorID=insID;
+}
+
+void Instructor::ViewShedule(){
+    cout << "viewschedule function called" << endl;
+    cout << " ";
+    cout << "---------------------------------------------" << endl;
+    cout << endl;
+}
+
+void Instructor::createQuiz(){
+}
+
+Instructor::~Instructor(){
+}
+
+int main (){
+
+    cout << "****** Online Teacher Trainer System  *******" << endl;
+    cout << "---------------------------------------------" << endl;
+    cout << "-------------------Welcome-------------------" << endl;
+    cout << endl;
+
+    Payment pymnt1(12345,000111);
+     pymnt1.displayPaymentDetails();
+     pymnt1.calculatePayment();
+
+    Course crs1(1010,"IWT",567);
+     crs1.addCourse();
+     crs1.removeCourse();
+     crs1.displayCourseDetails();
+
+     /*Customer *ctm1=new Customer("Dilshan",410,"dil1998");
+     ctm1->displayCustomerDetails();
+     ctm1->makePayment(); */
+
+     Report *rpt1;
+     rpt1->generateReport();
+
+     LectureSession lecse(101,2002);
+     lecse.viewSchedule();
+
+     /*Admin adm1(1009,"Perera");
+     adm1.validatePayment();
+     adm1.updateSystemDetails(); */
+
+     /*Manage mng1(100,"24/05/1998");
+     mng1.cancelLec();
+     mng1.updateLec();
+     mng1.assingDate(); */
+
+     Instructor ins("Rithma",1004);
+     ins.ViewShedule();
+     ins.createQuiz();
+
+     //delete ctm1;
+     delete rpt1;
+
+return 0;
+}
